@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React from 'react'
+import Header from './Component/Header'
+class App extends React.Component{
+  constructor(){
+    super()
+    this.state = {
+      name : 'ilman teguh prasetya',
+      status : 'login',
+      countPengguna : 0,
+      inputName : ''
+    }
+    this.countTambah = this.countTambah.bind(this)
+    this.setInputName = this.inputName.bind(this)
+  }
+  setInputName(inputName){
+    this.setState(
+      {
+        inputName : inputName.target.value
+      }
+    )
+  }
+  countTambah(){
+    this.setState(
+      {
+        countPengguna : this.state.countPengguna + 1
+      }
+    )
+  }
+  render(){
+    return(
+      <div className='App'>
+        <Header namaPengguna={this.state.name} statusPengguna={this.state.status}/>
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App 
